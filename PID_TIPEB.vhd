@@ -4,12 +4,8 @@
 --                            M. Azhar Wahid                            --
 --                      Bandung State Polytechnic                       --
 --                                                                      --
--- 				  Github:https://github.com/WongTampan123                --
+-- 		 Github:https://github.com/WongTampan123                --
 --------------------------------------------------------------------------         
-
---------------------------------------------------------------------------
---                        ALGORITMA SI ABANG                            --
---------------------------------------------------------------------------
 
 library ieee;
 use IEEE.std_logic_1164.ALL;
@@ -27,7 +23,7 @@ entity PID_TIPEB is
 		CLK		: in std_logic;
 		SV_IN		: in ufixed(7 downto 0);
 		PV_IN		: in ufixed(7 downto 0);
-		MV_OUT	: out std_logic_vector(7 downto 0);
+		MV_OUT		: out std_logic_vector(7 downto 0);
 		TX_DV		: out std_logic
 		);
 end entity;
@@ -46,18 +42,18 @@ architecture behavioral of PID_TIPEB is
 	constant c_Scale	: ufixed(0 downto -9) := to_ufixed(0.00976,0,-9);
 	
 	--Signal Konversi PV dan SV
-	signal r_SV_Conv	: ufixed(8 downto -9);
-	signal r_PV_Conv	: ufixed(8 downto -9);
+	signal r_SV_Conv		: ufixed(8 downto -9);
+	signal r_PV_Conv		: ufixed(8 downto -9);
 	signal r_SV			: sfixed(9 downto -9);
 	signal r_PV			: sfixed(9 downto -9);
 	
 	--Signal pada FSM PID
-	signal r_SV_PID			: sfixed(9 downto -9) := (others => '0');
-	signal r_PV_PID			: sfixed(9 downto -9) := (others => '0');
-	signal r_PV_PID_Past		: sfixed(9 downto -9) := (others => '0');
-	signal r_Error				: sfixed(10 downto -9) := (others => '0');
-	signal r_Error_Past		: sfixed(10 downto -9) := (others => '0');
-	signal r_Error_Int		: sfixed(12 downto -22) := (others => '0');
+	signal r_SV_PID					: sfixed(9 downto -9) := (others => '0');
+	signal r_PV_PID					: sfixed(9 downto -9) := (others => '0');
+	signal r_PV_PID_Past				: sfixed(9 downto -9) := (others => '0');
+	signal r_Error					: sfixed(10 downto -9) := (others => '0');
+	signal r_Error_Past				: sfixed(10 downto -9) := (others => '0');
+	signal r_Error_Int				: sfixed(12 downto -22) := (others => '0');
 	signal r_Error_Int_Past	: sfixed(12 downto -22) := (others => '0');
 	signal r_Error_Int_Total: sfixed(13 downto -22) := (others => '0');
 	signal r_P					: sfixed(19 downto -17) := (others => '0');
